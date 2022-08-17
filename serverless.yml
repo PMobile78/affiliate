@@ -1,0 +1,16 @@
+service: genesis-web-affiliate
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  genesis-web-affiliate:
+    handler: index.handler
+    events:
+      - http:
+          path: /
+          method: ANY

@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  genesisAffiliateStage:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      AutoPublishAlias: live
+      Handler: index.handler
+      Runtime: nodejs12.x
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 120
+      Role: 'arn:aws:iam::502875221486:role/genesis-web-affiliate-stage'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-01047c9eaeeaea435
+        SubnetIds:
+          - subnet-00bc6293ff4652e4c
+          - subnet-0907dcf29a278dbdc
+      Environment:
+        Variables:
+          Function: genesis-affiliate-stage
+          Project: Genesis
+          development: staging
+          useRabbitMQ: true
+          useHyuna: false
+      Tracing: Active

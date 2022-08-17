@@ -1,0 +1,10 @@
+conf/config-local.js
+.application.json
+/node_modules
+.env
+.history
+/serverless.yaml
+/.idea
+
+# Serverless directories
+.serverless

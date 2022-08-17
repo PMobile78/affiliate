@@ -1,0 +1,17 @@
+version: 0.2
+env:
+  git-credential-helper: yes
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  build:
+    commands:
+      - npm install
+      - export BUCKET=codepipeline-us-east-1-516062891097
+      - aws cloudformation package --template-file templateStage.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+artifacts:
+  type: zip
+  files:
+    - templateStage.yml
+    - outputtemplate.yml
